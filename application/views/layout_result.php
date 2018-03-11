@@ -35,15 +35,12 @@
 	<script src="<?php echo base_url() ?>assets/js/Chart.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/Chart.bundle.js"></script>
 	<script type="text/javascript">
-		function startRefresh() {
-		    $.get('', function(data) {
-		        $(document.body).html(data);    
-		    });
-		}
-		$(function() {
-		    setTimeout(startRefresh, 20000);
-		});
-	</script>
+    var auto_refresh = setInterval(
+    function () {
+       $('#load_content').load('<?php echo base_url() ?>welcome/data').fadeIn("slow");
+    }, 2000);
+    
+</script>
 </head>
 
 <body>

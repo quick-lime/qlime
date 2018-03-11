@@ -63,7 +63,7 @@
 						<!-- LEvel Login Super -->
 						<?php if($level == "super"){ ?>
 						<li><a href="<?php echo base_url(); ?>dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-						<li><a href="#"><i class="fa fa-user"></i> <span>Data Paslon</span></a></li>
+						<li><a href="<?php echo base_url(); ?>paslon"><i class="fa fa-user"></i> <span>Data Paslon</span></a></li>
 						<li><a href="<?php echo base_url(); ?>relawan"><i class="fa fa-users"></i> <span>Data Relawan</span></a></li>
 						<li><a href="<?php echo base_url(); ?>tps"><i class="fa fa-archive"></i> <span>Data TPS</span></a></li>
 						<li><a href="<?php echo base_url(); ?>operator"><i class="fa fa-users"></i> <span>Data Operator</span></a></li>
