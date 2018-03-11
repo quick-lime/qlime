@@ -1,0 +1,45 @@
+.tab-content{
+	background: #fff;
+	margin-bottom: 50px;
+}
+.btn-action{
+	margin-bottom: 20px;
+	margin-top: -10px;
+}
+.btn-xs{
+	padding: 3px 8px;
+}
+.page-title h3{
+	padding: 0;
+	margin: 0;
+	font-size:18px;
+}
+table{
+	font-size: 15px;
+}
+tr th{
+	background: #dd2d6f;
+	color: #fff;
+}
+#center{
+	text-align: center;
+}
+.modal-title{
+	text-transform: uppercase;
+	font-weight: 600;
+}
+.bg-header{
+	background-image: url("../../assets/img/bg-header.jpg");
+	width: 100% !important;
+    height: 450px;
+	margin-top: -20px;
+	background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: block;  
+}
+@media only screen and (max-width: 400px) {
+	.bg-header{
+		background-image: url("../../assets/img/bg-header.jpg");
+		height: 150px;
+	}
+}
