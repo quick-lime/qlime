@@ -234,7 +234,8 @@ tr th{
     padding-top: 0;
     overflow: hidden;
     text-align: center;
-    background-color: rgba(214, 224, 226, 0.2);
+    background-color: #fff;
+    border:1px solid #ddd;
 }
 
 .card.hovercard .cardheader {

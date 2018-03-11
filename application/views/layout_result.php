@@ -49,7 +49,7 @@
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="<?php echo base_url('login') ?>"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
+	      <a class="navbar-brand" href="#"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
 	    </div>
 	  </div><!-- /.container-fluid -->
 	</nav>

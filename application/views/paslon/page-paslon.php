@@ -2,10 +2,6 @@
 <div class="main-content">
 		<div class="container-fluid">
 			<h3 class="page-title"><?php echo $title; ?></h3>
-			<div class="panel panel-headline">
-				<div class="panel-heading">
-				</div>
-				  <div class="panel-body">
 				  	<div class="col-lg-4">
 			            <div class="card hovercard">
 			                <div class="cardheader">
@@ -92,5 +88,3 @@
 				  </div>
 				</div>
 			</div>
-		</div>
-	</div>
