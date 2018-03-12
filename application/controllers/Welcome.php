@@ -18,9 +18,9 @@ class Welcome extends CI_Controller {
 	}
 
 	public function proses_login(){
-		$username = $this->input->post('username');
+		$nohp = $this->input->post('nohp');
 		$password = $this->input->post('password'); 
-		$get = $this->welcome_model->cek_login($username,$password);
+		$get = $this->welcome_model->cek_login($nohp,$password);
 		$c = count($get);
 		if($c >= 1){
 			$data_session = array(
@@ -29,7 +29,11 @@ class Welcome extends CI_Controller {
 				'password' => $get['password'],
 				'id' => $get['id']);
 			$this->session->set_userdata($data_session);
-			redirect('dashboard');
+			if($get['level'] ==  "relawan"){
+				redirect('suara');
+			}else{
+				redirect('dashboard');
+			}
 		}else{
 			redirect('admin');
 		}

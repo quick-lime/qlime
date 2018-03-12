@@ -7,8 +7,8 @@ class Welcome_model extends CI_Model {
 		$this->load->database();
 	}
 
-	public function cek_login($username, $password){
-		$this->db->where('username',$username);
+	public function cek_login($nohp, $password){
+		$this->db->where('nohp',$nohp);
 		$this->db->where('password',$password);
 		$this->db->limit(1);
 		return $this->db->get('admin')->row_array();

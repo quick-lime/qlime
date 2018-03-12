@@ -10,6 +10,7 @@ class Suara_model extends CI_Model {
 	function input_suara(){
 		$ssid = $this->session->userdata('id');
 		$data = array('idrelawan' => $ssid,
+					'notps' => $this->input->post('notps'),
 					'calon1' => $this->input->post('no1'),
 					'calon2' => $this->input->post('no2'),
 					'calon3' => $this->input->post('no3'),

@@ -9,7 +9,7 @@
 					<div class="table-responsive">
 							<table id="data" class="table table-striped table-hover">
 								<thead>
-									<th width="20">No.</th>
+									<th width="50px">No TPS</th>
 									<th>Paslon 1</th>
 									<th>Paslon 2</th>
 									<th>Paslon 3</th>
@@ -20,7 +20,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>1.</td>
+										<td><?php echo "".$view['notps'].""; ?></td>
 										<td><?php echo "".$view['calon1'].""; ?> Suara</td>
 										<td><?php echo "".$view['calon2'].""; ?> Suara</td>
 										<td><?php echo "".$view['calon3'].""; ?> Suara</td>

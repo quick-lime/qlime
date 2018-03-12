@@ -42,24 +42,27 @@
 			      		<input type="text" name="no3" required="true" class="form-control" placeholder="Masukan Jumlah Suara">
 			      	</div>
 			      	
-		      	
 		      </div>
 		    </div>
 		</div>
 		<div class="col-md-12">
 			<div class="panel panel-headline">
 				<div class="panel-body" style="padding: 20px 10px">
-					<div class="form-group col-md-4">
-			      		<label>Suara Tidak Sah</label>
-			      		<input type="number" name="tidaksah" required="true" class="form-control" placeholder="Suara Tidak Sah">
+					<div class="form-group col-md-3">
+			      		<label>Tidak Sah</label>
+			      		<input type="number" name="tidaksah" required="true" class="form-control" placeholder="Tidak Sah">
 			      	</div>
-			      	<div class="form-group col-md-4">
+			      	<div class="form-group col-md-3">
 			      		<label>Daftar Pemilih Tetap (DPT)</label>
 			      		<input type="number" name="dpt" required="true" class="form-control" placeholder="DPT">
 			      	</div>
-			      	<div class="form-group col-md-4">
+			      	<div class="form-group col-md-3">
 			      		<label>Kesempatan Memilih</label>
 			      		<input type="number" name="kesempatan" required="true" class="form-control" placeholder="Kesempatan Memilih" value="0">
+			      	</div>
+			      	<div class="form-group col-md-3">
+			      		<label>Nomor TPS</label>
+			      		<input type="number" name="notps" required="true" class="form-control" placeholder="No TPS">
 			      	</div>
 			      	<div class="form-group col-md-12">
 			      		<label>Foto Bukti</label>

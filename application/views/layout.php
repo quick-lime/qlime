@@ -38,17 +38,7 @@
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
 				</div>
 				<ul class="nav navbar-nav navbar-right">
-				<?php
-					$level = $this->session->userdata('level');
-					if($level == "relawan"){ ?>
-					<!-- Link Logout Untuk Relawan -->
-					<li><a href="<?php echo base_url('loginr/logout'); ?>" id="log" "><span class="fa fa-sign-out"></span> Logout</a></li>
-					<!--  -->
-				<?php }else{ ?>
-					<!-- Link Logout Untuk Admin/Super -->
 					<li><a href="<?php echo base_url('welcome/logout'); ?>" id="log" "><span class="fa fa-sign-out"></span> Logout</a></li>
-					<!--  -->
-				<?php  } ?>
 			    </ul>
 			</div>
 		</nav>
@@ -61,10 +51,12 @@
 						<li class="header" style="text-align:center; margin: 15px 0;">MAIN NAVIGATION</li>
 						
 						<!-- LEvel Login Super -->
-						<?php if($level == "super"){ ?>
+						<?php 
+						
+						$level = $this->session->userdata('level');
+						if($level == "super"){ ?>
 						<li><a href="<?php echo base_url(); ?>dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 						<li><a href="<?php echo base_url(); ?>paslon"><i class="fa fa-user"></i> <span>Data Paslon</span></a></li>
-						<li><a href="<?php echo base_url(); ?>relawan"><i class="fa fa-users"></i> <span>Data Relawan</span></a></li>
 						<li><a href="<?php echo base_url(); ?>tps"><i class="fa fa-archive"></i> <span>Data TPS</span></a></li>
 						<li><a href="<?php echo base_url(); ?>operator"><i class="fa fa-users"></i> <span>Data Operator</span></a></li>
 						<li><a href="#"><i class="fa fa-question-circle"></i> <span>Bantuan</span></a></li>

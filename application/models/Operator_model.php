@@ -11,7 +11,6 @@ class Operator_model extends CI_Model {
 		$data = array('nik' => $this->input->post('nik'),
 					'nama' => $this->input->post('nama'),
 					'nohp' => $this->input->post('nohp'),
-					'username' => $this->input->post('username'),
 					'password' => $this->input->post('password'),
 					'jeniskelamin' => $this->input->post('jeniskelamin'),
 					'alamat' => $this->input->post('alamat'),
@@ -53,6 +52,25 @@ class Operator_model extends CI_Model {
 	public function get_w_id($id){
 		$this->db->where('id',$id);
 		return $this->db->get('admin')->row_array();
+	}
+
+	public function list_kabupaten(){
+		$this->db->group_by('kabupaten');
+		$this->db->order_by('kabupaten','DESC');
+		return $this->db->get('tps')->result_array();
+	}
+
+	public function get_kecamatan($kabupaten){
+		$this->db->where('kabupaten',$kabupaten);
+		$this->db->group_by('kecamatan','DESC');
+		return $this->db->get('tps')->result_array();
+	}
+
+	public function get_kelurahan($kabupaten,$kecamatan){
+		$this->db->where('kabupaten',$kabupaten);
+		$this->db->where('kecamatan',$kecamatan);
+		$this->db->group_by('kelurahan','DESC');
+		return $this->db->get('tps')->result_array();
 	}
 
 }

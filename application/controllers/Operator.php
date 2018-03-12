@@ -21,6 +21,7 @@ class Operator extends CI_Controller {
 	}
 
 	public function add(){
+		$data['list_kabupaten'] = $this->operator_model->list_kabupaten();
 		$data['isi'] = "operator/add-operator";
 		$data['title'] = 'Tambah Data Operator';
 		$this->load->view('layout',$data);
@@ -48,4 +49,21 @@ class Operator extends CI_Controller {
 		$this->operator_model->proses_hapus();
 		redirect('operator');
 	}
+
+	public function get_kecamatan(){
+		echo "<option value='' disabled selected class='hide'>- Pilih Kecamatan -</option>";
+		$kecamatan = $this->operator_model->get_kecamatan($this->input->get('kabupaten'));
+		foreach ($kecamatan as $value) {
+			echo"<option value='".$value['kecamatan']."'>".$value['kecamatan']."</option>";			
+		}		
+	}
+
+	public function get_kelurahan(){
+		echo "<option value='' disabled selected class='hide'>- Pilih Kelurahan -</option>";
+		$kelurahan = $this->operator_model->get_kelurahan($this->input->get('kabupaten'),$this->input->get('kecamatan'));
+		foreach ($kelurahan as $value) {
+			echo"<option value='".$value['id']."'>".$value['kelurahan']."</option>";			
+		}	
+	}
+
 }

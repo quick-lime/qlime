@@ -35,8 +35,8 @@
 							</div>
 							<?php echo form_open(base_url().'welcome/proses_login'); ?>
 								<div class="form-group">
-									<label for="signin-email" class="control-label sr-only">Username</label>
-									<input type="text" class="form-control" name="username" id="username" placeholder="Username" autofocus="">
+									<label for="signin-email" class="control-label sr-only">No Handphone</label>
+									<input type="text" class="form-control" name="nohp" id="username" placeholder="No Handphone" autofocus="">
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
