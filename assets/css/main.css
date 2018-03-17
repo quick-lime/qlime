@@ -157,16 +157,16 @@ html.fullscreen-bg #wrapper {
   padding: 0;
   margin: 0;
   border: none;
-  background-color: #cd2966;
+  background-color: #d3242b;
   color: #fff }
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    background-color: #cd2966; }
+    background-color: #d3242b; }
   .navbar-default .navbar-toggle, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-    background-color: #cd2966; }
+    background-color: #d3242b; }
   .navbar-default .brand {
     float: left;
     padding: 30px 39px;
-    background-color: #fff; }
+    background-color: #d3242b; }
   @media screen and (max-width: 1024px) {
     .navbar-default .brand {
       padding-left: 30px;
@@ -601,11 +601,11 @@ ul.list-justify > li {
     border-color: #00a0f0; }
 
 .btn-danger {
-  background-color: #cd2966;
-  border-color: #d50552; }
+  background-color: #d3242b;
+  border-color: #d3242b; }
   .btn-danger:hover, .btn-danger:focus {
-    background-color: #ec1666;
-    border-color: #ec1666; }
+    background-color: #e52e35;
+    border-color: #e52e35; }
 
 .btn-warning {
   background-color: #e4cb10;
@@ -637,9 +637,9 @@ fieldset[disabled] .btn {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   background-color: #fff;
   margin-bottom: 30px; }
   .panel .panel-heading,
@@ -736,7 +736,7 @@ fieldset[disabled] .btn {
     width: 60px;
     height: 60px;
     line-height: 70px;
-    background-color: #dd2d6f;
+    background-color: #d3242b;
     text-align: center; }
     .metric .icon i {
       font-size: 25px;
@@ -759,7 +759,7 @@ fieldset[disabled] .btn {
     display: block; }
   .metric .readmore{
     font-size: 14px;
-    color: #c02760;
+    color: #d3242b;
   }
   .metric .readmore:hover{
     color: #e2115f;

@@ -21,7 +21,7 @@
 	<link href="<?php echo base_url() ?>assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
 	<script src="<?php echo base_url() ?>assets/js/jquery-3.3.1.min.js"></script>
 	<!-- ICONS -->
-	<meta name="theme-color" content="#dd2d6f">
+	<meta name="theme-color" content="#d3242b">
 	<link rel="icon" sizes="192x192" href="<?php echo base_url() ?>assets/img/logo-q.png">
 </head>
 

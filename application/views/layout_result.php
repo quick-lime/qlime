@@ -29,7 +29,7 @@
 	<link href="<?php echo base_url() ?>assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
 	<script src="<?php echo base_url() ?>assets/js/jquery-3.3.1.min.js"></script>
 	<!-- ICONS -->
-	<meta name="theme-color" content="#dd2d6f">
+	<meta name="theme-color" content="#d3242b">
 	<link rel="icon" sizes="192x192" href="<?php echo base_url() ?>assets/img/logo-q.png">
 	<!-- CHART -->
 	<script src="<?php echo base_url() ?>assets/js/Chart.js"></script>
@@ -46,157 +46,91 @@
 <body>
 	<!-- NAVBAR -->
 	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
+	  <div class="container">
 	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" id="custom-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar" id="custom-icon"></span>
+	        <span class="icon-bar" id="custom-icon"></span>
+	        <span class="icon-bar" id="custom-icon"></span> 
+	      </button>		
 	      <a class="navbar-brand" href="#"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
 	    </div>
-	  </div><!-- /.container-fluid -->
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#"><span class="menu_r">Hasil per Wilayah</span></a></li>
+	      </ul>
+	    </div>
+	  </div>
 	</nav>
-	<!-- <div class="bg-header">
-			
-	</div> -->
+	<div class="goal">
+		<h3>Hitung Cepat Hasil Pilkada</h3>
+		<h4>Pilkada Sumatera Utara 27 Juni 2018</h4>
+	</div>
 	<div class="container">
-		<div class="goal">
-				<h3>PILKADA PROVINSI SUMATERA UTARA 2018</h3>
-				<h4>Hasil Hitung TPS Provinsi Sumatera Utara</h4>
-		</div>
-		
-		<div class="panel panel-headline">
-			<div class="panel-body">
-				<!-- CHART -->
-				<div class="col-md-5" style="margin-bottom: 20px;">
-					<canvas id="pilgubChart" width="400" height="400"></canvas>
-				</div>
-				<!-- END CHART -->
-
-				<!-- POLING SUARA -->
-				<div class="col-md-7">
-					<span>Data Masuk : 123 dari 234 TPS</span>
-					<div class="progress">
-					    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-					      70%
-					    </div>
-					 </div>
-					<div class="table-responsive">
-						<table class="table" style="border: 1px solid #ccc;">
-							<tbody>
-								<tr>
-									<td>
-										<p id="number">1.</p>
-									</td>
-									<td width="100">
-										<img src="<?php echo base_url() ?>assets/img/1.png" width="80">
-									</td>
-									<td>
-										<div id="name">
-										<p>Edy Rahmayadi</p>
-										<p>Musa Rajekshah</p>
-										</div>
-									</td>
-									<td>
-										<p id="percen"><?php echo $pc1; ?>%</p></p>
-										<p id="suara"><?php echo $paslon1; ?> Suara</p>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<p id="number">2.</p>
-									</td>
-									<td>
-										<img src="<?php echo base_url() ?>assets/img/2.png" width="80">
-									</td>
-									<td>
-										<div id="name">
-										<p>Djarot Saful Hidayat</p>
-										<p>Sihar Sitorus</p>
-										</div>
-									</td>
-									<td>
-										<p id="percen"><?php echo $pc2; ?>%</p></p>
-										<p id="suara"><?php echo $paslon2; ?> Suara</p>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<p id="number">3.</p>
-									</td>
-									<td>
-										<img src="<?php echo base_url() ?>assets/img/3.png" width="80">
-									</td>
-									<td>
-										<div id="name">
-										<p>Jopinus Ramli Saragih</p>
-										<p>Ance Selian</p>
-										</div>
-									</td>
-									<td>
-										<p id="percen"><?php echo $pc3; ?>%</p></p>
-										<p id="suara"><?php echo $paslon3; ?> Suara</p>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="3">
-										<div id="total">TOTAL</div>
-									</td>
-									<td>
-										<p id="percen">100%</p></p>
-										<p id="suara"><?php echo $total; ?> Suara</p>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- END POLING -->
-				<!-- LIST KABUPATEN -->
+		<div class="col-lg-4" style="margin-bottom: 20px;">
+			<img src="<?php echo base_url() ?>assets/img/edysihar.png" class="img-responsive center">
+			<div class="poling">
 				<div class="col-md-12">
-					<h4>Hasil Perhitungan per Wilayah</h4>
-					<div class="table-responsive">
-						<table class="table table-striped table-hover">
-							<thead>
-								<th width="30">No.</th>
-								<th>Kabupaten/Kota</th>
-								<th>Calgub 1</th>
-								<th>Calgub 2</th>
-								<th>Calgub 3</th>
-								<th>Data Masuk</th>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1.</td>
-									<td><a href="#">Kabupaten Asahan</a></td>
-									<td id="center">20%</td>
-									<td id="center">50%</td>
-									<td id="center">30%</td>
-									<td id="center">123/234 TPS</td>
-								</tr>
-								<tr>
-									<td>2.</td>
-									<td><a href="#">Kabupaten Batubara</a></td>
-									<td id="center">20%</td>
-									<td id="center">50%</td>
-									<td id="center">30%</td>
-									<td id="center">123/234 TPS</td>
-								</tr>
-								<tr>
-									<td>3.</td>
-									<td><a href="#">Kabupaten Dairi</a></td>
-									<td id="center">20%</td>
-									<td id="center">50%</td>
-									<td id="center">30%</td>
-									<td id="center">123/234 TPS</td>
-								</tr>
-							</tbody>
-						</table>
+					<div id="name">
+						<p>Edy Rahmayadi</p>
+						<p>Musa Rajekshah</p>
 					</div>
+					<span id="percen"><?php echo $pc1; ?>%</span>
+					<span id="suara"><?php echo $paslon1; ?> Suara</span>
 				</div>
-				<!-- END LIST -->
 			</div>
 		</div>
+		<div class="col-lg-4" style="margin-bottom: 20px;">
+			<img src="<?php echo base_url() ?>assets/img/djarot-sihar-jpnn.png" style="width: 93%;" class="center">
+			<div class="poling">
+				<div class="col-md-12">
+					<div id="name">
+						<p>Djarot S Hidayat</p>
+						<p>Sihar Sitorus</p>
+					</div>
+					<span id="percen"><?php echo $pc2; ?>%</span>
+					<span id="suara"><?php echo $paslon2; ?> Suara</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4" style="margin-bottom: 20px;">
+			<img src="<?php echo base_url() ?>assets/img/paslon3.png"  style="width: 82%;" class="center">
+			<div class="poling">
+				<div class="col-md-12">
+					<div id="name">
+						<p>JR Saragih</p>
+						<p>Ance Selian</p>
+					</div>
+					<span id="percen"><?php echo $pc3; ?>% </span>
+					<span id="suara"><?php echo $paslon3; ?> Suara</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6" style="margin-bottom: 20px;">
+			<div class="total-poling">
+				<div class="col-md-12">
+					<div id="name-2">
+						<p>Total Suara</p>
+					</div>
+					<span id="percen-2"><?php echo $total; ?></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6" style="margin-bottom: 20px;">
+			<div class="total-poling">
+				<div class="col-md-12">
+					<div id="name-2">
+						<p>Total TPS</p>
+					</div>
+					<span id="percen-2">21.332</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12 text-center" style="margin-bottom: 50px;"> 
+		    <button id="singlebutton" name="singlebutton" class="btn btn-danger ">Hasil per Wilayah</button> 
+		</div>
 	</div>
-	<!-- END CONTENT -->
-
+	<footer class="footer" style="padding-top: 15px;"><span>&copy; 2018 - <a href="#">QLime</a> All Rights Reserved.</span></footer>
 	<!-- Javascript -->
 	<script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -245,6 +179,8 @@
 
 	Chart.defaults.global.defaultFontSize = 16;
 
+
+
 	var pilgubData = {
 	    labels: [
 	        "Edy Rahmayadi - Musa R",
@@ -256,15 +192,23 @@
 	            data: [<?php echo $pc1; ?>, <?php echo $pc2; ?>, <?php echo $pc3; ?>],
 	            backgroundColor: [ 
 	                "#e6ed31",
-	                "#f23078",
+	                "#d3242b",
 	                "#31a9ed",
 	            ]
 	        }]
 	};
 
+	var options = {
+		legend : {
+			display : true,
+			position : "bottom"
+		}
+	};
+
 	var pieChart = new Chart(pilgub, {
 	  type: 'pie',
-	  data: pilgubData
+	  data: pilgubData,
+	  options : options
 	});
 	</script>
 

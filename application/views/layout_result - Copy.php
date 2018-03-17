@@ -22,17 +22,25 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/chartist/css/chartist-custom.css">
 		<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/demo.css">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- DataTables -->
 	<link href="<?php echo base_url() ?>assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
 	<script src="<?php echo base_url() ?>assets/js/jquery-3.3.1.min.js"></script>
 	<!-- ICONS -->
-	<meta name="theme-color" content="#dd2d6f">
+	<meta name="theme-color" content="#d3242b">
 	<link rel="icon" sizes="192x192" href="<?php echo base_url() ?>assets/img/logo-q.png">
 	<!-- CHART -->
 	<script src="<?php echo base_url() ?>assets/js/Chart.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/Chart.bundle.js"></script>
+	<script type="text/javascript">
+    var auto_refresh = setInterval(
+    function () {
+       $('#load_content').load('<?php echo base_url() ?>welcome/data').fadeIn("slow");
+    }, 2000);
+    
+</script>
 </head>
 
 <body>
@@ -41,28 +49,19 @@
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="<?php echo base_url('login') ?>"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
+	      <a class="navbar-brand" href="#"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
 	    </div>
 	  </div><!-- /.container-fluid -->
 	</nav>
-	<!-- NAVBAR -->
-	<!-- HEADER -->
-<!-- 	<header>
-		<div class="container">
+	<!-- <div class="bg-header">
 			
-		</div>
-	</header> -->
-	<!-- END HEADER -->
-	<!-- CONTENT -->
-	<div class="container">
+	</div> -->
+	<div class="container-fluid">
 		<div class="goal">
-				<h3>PILKADA PROVINSI SUMATERA UTARA 2018</h3>
+				<h3>Pilkada Provinsi Sumatera Utara</h3>
 				<h4>Hasil Hitung TPS Provinsi Sumatera Utara</h4>
-			</div>
-		<div class="alert alert-danger alert-dismissible" role="alert">
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		  <strong>Perhatian!</strong> Portal ini dibuat untuk memberikan pelayanan kepada masyarakat untuk mengetahui hasil Pilkada Serentak 27 Juni 2018 khususnya di provinsi Sumatera Utara dengan lebih cepat dan akurat. Data hasil Pilkada  merupakan hasil sementara dan bukan hasil final. Jika terdapat kesalahan akan dilakukan perbaikan pada proses rekapitulasi ditingkat atasnya.
 		</div>
+		
 		<div class="panel panel-headline">
 			<div class="panel-body">
 				<!-- CHART -->
@@ -153,13 +152,58 @@
 				<!-- LIST KABUPATEN -->
 				<div class="col-md-12">
 					<h4>Hasil Perhitungan per Wilayah</h4>
-					
+					<div class="table-responsive">
+						<table class="table table-striped table-hover" id="data">
+							<thead>
+								<th width="30">No.</th>
+								<th>Kabupaten/Kota</th>
+								<th>Calgub 1</th>
+								<th>Calgub 2</th>
+								<th>Calgub 3</th>
+								<th>Data Masuk</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1.</td>
+									<td><a href="#">Kabupaten Asahan</a></td>
+									<td id="center">20%</td>
+									<td id="center">50%</td>
+									<td id="center">30%</td>
+									<td id="center">123/234 TPS</td>
+								</tr>
+								<tr>
+									<td>2.</td>
+									<td><a href="#">Kabupaten Batubara</a></td>
+									<td id="center">20%</td>
+									<td id="center">50%</td>
+									<td id="center">30%</td>
+									<td id="center">123/234 TPS</td>
+								</tr>
+								<tr>
+									<td>3.</td>
+									<td><a href="#">Kabupaten Dairi</a></td>
+									<td id="center">20%</td>
+									<td id="center">50%</td>
+									<td id="center">30%</td>
+									<td id="center">123/234 TPS</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<!-- END LIST -->
 			</div>
 		</div>
 	</div>
 	<!-- END CONTENT -->
+	<footer class="text-center center-block">&copy; 2018 - <a href="#">QLime</a> All Rights Reserved.
+	<br />
+                <a href="#"><i class="fa fa-facebook-square  social"></i></a>
+	            <a href="#"><i class="fa fa-twitter-square  social"></i></a>
+	            <a href="#"><i class="fa fa-google-plus-square  social"></i></a>
+	            <a href="#"><i class="fa fa-envelope-square  social"></i></a></footer>
+
 
 	<!-- Javascript -->
 	<script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
@@ -209,6 +253,8 @@
 
 	Chart.defaults.global.defaultFontSize = 16;
 
+
+
 	var pilgubData = {
 	    labels: [
 	        "Edy Rahmayadi - Musa R",
@@ -220,15 +266,23 @@
 	            data: [<?php echo $pc1; ?>, <?php echo $pc2; ?>, <?php echo $pc3; ?>],
 	            backgroundColor: [ 
 	                "#e6ed31",
-	                "#f23078",
+	                "#d3242b",
 	                "#31a9ed",
 	            ]
 	        }]
 	};
 
+	var options = {
+		legend : {
+			display : true,
+			position : "bottom"
+		}
+	};
+
 	var pieChart = new Chart(pilgub, {
-	  type: 'doughnut',
-	  data: pilgubData
+	  type: 'pie',
+	  data: pilgubData,
+	  options : options
 	});
 	</script>
 
