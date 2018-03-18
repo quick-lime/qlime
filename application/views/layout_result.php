@@ -3,9 +3,11 @@
 	$paslon2 = $data['tpaslon2'];
 	$paslon3 = $data['tpaslon3'];
 	$total = $paslon1 + $paslon2 + $paslon3;
-	$pc1 = number_format(100 / $total * $paslon1 , 2);
-	$pc2 = number_format(100 / $total * $paslon2 , 2);
-	$pc3 = number_format(100 / $total * $paslon3 , 2);
+	if($total > 0){
+		$pc1 = number_format(100 / $total * $paslon1 , 2);
+		$pc2 = number_format(100 / $total * $paslon2 , 2);
+		$pc3 = number_format(100 / $total * $paslon3 , 2);
+	}
 ?>
 <!doctype html>
 <html lang="en">

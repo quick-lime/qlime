@@ -26,6 +26,10 @@ class Welcome extends CI_Controller {
 			$data['persen1'] = number_format((100 / $data['totalsuara']) * $data['suara1'], 2);
 			$data['persen2'] = number_format((100 / $data['totalsuara']) * $data['suara2'], 2);
 			$data['persen3'] = number_format((100 / $data['totalsuara']) * $data['suara3'], 2);
+		}else{
+			$data['persen1'] = 0;
+			$data['persen2'] = 0;
+			$data['persen3'] = 0;
 		}
 		
 		$data['totaltps'] = $this->welcome_model->total_tps();
