@@ -13,6 +13,25 @@ class Welcome extends CI_Controller {
 		$this->load->view('layout_result',$data);
 	}
 
+	public function get_json(){
+		
+		$data['suara1'] = $this->welcome_model->data()['tpaslon1'];
+		$data['suara2'] = $this->welcome_model->data()['tpaslon2'];
+		$data['suara3'] = $this->welcome_model->data()['tpaslon3'];
+		$data['totalsuara'] = $this->welcome_model->data()['tpaslon1'] + 
+							  $this->welcome_model->data()['tpaslon2'] +
+							  $this->welcome_model->data()['tpaslon3'];
+		
+		if($data['totalsuara'] > 0){
+			$data['persen1'] = number_format((100 / $data['totalsuara']) * $data['suara1'], 2);
+			$data['persen2'] = number_format((100 / $data['totalsuara']) * $data['suara2'], 2);
+			$data['persen3'] = number_format((100 / $data['totalsuara']) * $data['suara3'], 2);
+		}
+		
+		$data['totaltps'] = $this->welcome_model->total_tps();
+		echo json_encode($data);
+	}
+
 	public function login(){
 		$this->load->view('page-login');
 	}

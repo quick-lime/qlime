@@ -32,7 +32,6 @@ class Suara extends CI_Controller {
 	public function input_suara(){
 		$this->suara_model->input_suara();
 		redirect('suara');
-		// echo $this->input->post('no2');
 	}
 
 	public function view(){
@@ -40,4 +39,16 @@ class Suara extends CI_Controller {
 		$data['title'] = 'Verifikasi Data Suara';
 		$this->load->view('layout',$data);
 	}
+
+	public function ver(){
+		$data['isi'] = "suara/ver-suara";
+		$data['title'] = 'Verifikasi Data Suara';
+		$this->load->view('layout',$data);
+	}
+
+	public function proses_ver(){
+		
+	}
+
+
 }

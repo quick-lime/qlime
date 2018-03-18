@@ -11,7 +11,7 @@
 <html lang="en">
 
 <head>
-	<title>QLime &mdash; Quick Count 2018</title>
+	<title >QLime &mdash; Quick Count 2018</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -57,7 +57,7 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#"><span class="menu_r">Hasil per Wilayah</span></a></li>
+	        <li><a href="#"><span class="menu_r" id="ayam">Hasil per Wilayah</span></a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -75,8 +75,8 @@
 						<p>Edy Rahmayadi</p>
 						<p>Musa Rajekshah</p>
 					</div>
-					<span id="percen"><?php echo $pc1; ?>%</span>
-					<span id="suara"><?php echo $paslon1; ?> Suara</span>
+					<span id="percen" class="p1"><?php echo $pc1; ?>%</span>
+					<span id="suara" class="s1"><?php echo $paslon1; ?> Suara</span>
 				</div>
 			</div>
 		</div>
@@ -88,8 +88,8 @@
 						<p>Djarot S Hidayat</p>
 						<p>Sihar Sitorus</p>
 					</div>
-					<span id="percen"><?php echo $pc2; ?>%</span>
-					<span id="suara"><?php echo $paslon2; ?> Suara</span>
+					<span id="percen" class="p2"><?php echo $pc2; ?>%</span>
+					<span id="suara" class="s2"><?php echo $paslon2; ?> Suara</span>
 				</div>
 			</div>
 		</div>
@@ -101,8 +101,8 @@
 						<p>JR Saragih</p>
 						<p>Ance Selian</p>
 					</div>
-					<span id="percen"><?php echo $pc3; ?>% </span>
-					<span id="suara"><?php echo $paslon3; ?> Suara</span>
+					<span id="percen" class="p3"><?php echo $pc3; ?>% </span>
+					<span id="suara" class="s3"><?php echo $paslon3; ?> Suara</span>
 				</div>
 			</div>
 		</div>
@@ -112,7 +112,7 @@
 					<div id="name-2">
 						<p>Total Suara</p>
 					</div>
-					<span id="percen-2"><?php echo $total; ?></span>
+					<span id="percen-2" class="ts"><?php echo $total; ?></span>
 				</div>
 			</div>
 		</div>
@@ -122,7 +122,7 @@
 					<div id="name-2">
 						<p>Total TPS</p>
 					</div>
-					<span id="percen-2">21.332</span>
+					<span id="percen-2" class="tt">21.332</span>
 				</div>
 			</div>
 		</div>
@@ -144,7 +144,8 @@
 	<script src="<?php echo base_url(); ?>assets/js/dataTables/dataTables.bootstrap.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url(); ?>assets/js/dataTables/dataTables.buttons.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url(); ?>assets/js/dataTables/buttons.bootstrap.min.js" type="text/javascript"></script>
-        <script>
+    
+    <script>
 	    $(document).ready(function() {
 	        $('#data').DataTable({
 	            "oLanguage": {
@@ -164,11 +165,34 @@
 	</script>
 
 	<script type="text/javascript">
-		$(function(){
-    $('#scroll').slimScroll({
-	    height: 'auto',
-	    size: '13px',
-	    color:'#bbb'
+	$(document).ready(function() {
+		function get_json(){
+			$.ajax({url: "welcome/get_json", 
+				success: function(result){
+					var obj = jQuery.parseJSON(result);
+					$(".p1").html(obj.persen1 + '%');
+					$(".p2").html(obj.persen2 + '%');
+					$(".p3").html(obj.persen3 + '%');
+					$(".s1").html(obj.suara1 + ' Suara');
+					$(".s2").html(obj.suara2 + ' Suara');
+					$(".s3").html(obj.suara3 + ' Suara');
+					$(".ts").html(obj.totalsuara);
+					$(".tt").html(obj.totaltps);
+				}
+			});
+		}
+		get_json();
+
+		setInterval(function(){ 
+			get_json();
+		}, 1000);
+	});	
+
+	$(function(){
+    	$('#scroll').slimScroll({
+		    height: 'auto',
+		    size: '13px',
+		    color:'#bbb'
 	    });
 	});
 	</script>
@@ -178,8 +202,6 @@
 	var pilgub = document.getElementById("pilgubChart");
 
 	Chart.defaults.global.defaultFontSize = 16;
-
-
 
 	var pilgubData = {
 	    labels: [
@@ -210,11 +232,14 @@
 	  data: pilgubData,
 	  options : options
 	});
+
+
 	</script>
 
 	<!-- EXAMPLE -->
 
 	<!-- CHART -->
+
 </body>
 
 </html>
