@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: dbqc
 Target Host: localhost
 Target Database: dbqc
-Date: 3/10/2018 11:32:06 PM
+Date: 3/21/2018 12:55:49 AM
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -15,33 +15,16 @@ DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `nik` int(25) NOT NULL,
-  `username` varchar(30) NOT NULL,
+  `nohp` varchar(13) NOT NULL,
   `password` varchar(200) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `jeniskelamin` varchar(10) NOT NULL,
   `level` varchar(10) NOT NULL,
   `status` char(1) NOT NULL,
-  `nohp` varchar(13) NOT NULL,
   `alamat` varchar(200) NOT NULL,
+  `idtps` int(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for relawan
--- ----------------------------
-DROP TABLE IF EXISTS `relawan`;
-CREATE TABLE `relawan` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nik` varchar(20) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `nohp` varchar(13) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `jeniskelamin` varchar(10) NOT NULL,
-  `alamat` varchar(200) NOT NULL,
-  `tps` int(5) NOT NULL,
-  `status` char(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for suara
@@ -50,6 +33,7 @@ DROP TABLE IF EXISTS `suara`;
 CREATE TABLE `suara` (
   `id` int(6) NOT NULL AUTO_INCREMENT,
   `idrelawan` int(6) NOT NULL,
+  `notps` int(6) NOT NULL,
   `calon1` int(6) NOT NULL,
   `calon2` int(6) NOT NULL,
   `calon3` int(6) NOT NULL,
@@ -60,20 +44,53 @@ CREATE TABLE `suara` (
   `jam` time NOT NULL,
   `idadmin` int(5) DEFAULT NULL,
   `verifikasi` char(1) DEFAULT NULL,
+  `foto` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Table structure for tps
+-- ----------------------------
+DROP TABLE IF EXISTS `tps`;
+CREATE TABLE `tps` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `kabupaten` varchar(100) NOT NULL,
+  `kecamatan` varchar(100) NOT NULL,
+  `kelurahan` varchar(100) NOT NULL,
+  `jlhtps` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `admin` VALUES ('5', '123123', 'firman', 'firman', 'Firman', 'Laki-Laki', 'super', '1', '0812', 'Aceh');
-INSERT INTO `admin` VALUES ('6', '123', 'agus', 'agus', 'agus', 'Laki-Laki', 'admin', '1', '08213', 'medan\r\n');
-INSERT INTO `relawan` VALUES ('1', '12110046', 'Agus Setiawann', '12', '12', 'Laki-Laki', 'Medan', '1', '0');
-INSERT INTO `relawan` VALUES ('2', '12110047', 'Firman', '123', '123', 'Laki-Laki', 'Aceh', '2', '1');
-INSERT INTO `relawan` VALUES ('3', '111111111', '123', '123', '123', 'Laki-Laki', '123', '12', '1');
-INSERT INTO `relawan` VALUES ('4', '123', '123', '123', '123', 'Laki-Laki', '123', '12', '1');
-INSERT INTO `relawan` VALUES ('5', '12', 'Joko Setiawan', '0899', '123', 'Laki-Laki', 'Medan', '23', '0');
-INSERT INTO `relawan` VALUES ('6', '123333333333', 'Joko Setiawan', '0899', '123', 'Laki-Laki', 'Medan', '23', '0');
-INSERT INTO `relawan` VALUES ('7', '232131', 'Firman', '082137', '123', 'Laki-Laki', 'xasdsad', '3', '1');
-INSERT INTO `relawan` VALUES ('8', '12124213', 'Yusuf', '082231', '123', 'Laki-Laki', 'sadasda', '4', '1');
-INSERT INTO `suara` VALUES ('8', '2', '12', '23', '21', '12', '12', '23', '2018-03-10', '23:15:15', null, null);
+INSERT INTO `admin` VALUES ('5', '123123', '123', 'super', 'Firman', 'Laki-Laki', 'super', '1', 'Aceh', null);
+INSERT INTO `admin` VALUES ('6', '123', '123', 'admin', 'Agus Setiawan', 'Laki-Laki', 'admin', '1', 'medan\r\n', '5');
+INSERT INTO `admin` VALUES ('7', '4324', '123', 'relawan', 'Relawan', 'Perempuan', 'relawan', '1', 'Medan', '2');
+INSERT INTO `admin` VALUES ('8', '23', '23', '123', '232', 'Perempuan', 'admin', '1', '', '6');
+INSERT INTO `admin` VALUES ('9', '2222', '000', '000', 'Agus Setiawan', 'Perempuan', 'relawan', '1', 'Medan', '2');
+INSERT INTO `admin` VALUES ('10', '12321', '111', '111', 'Relawan 2', 'Perempuan', 'relawan', '1', 'Medan', '2');
+INSERT INTO `admin` VALUES ('11', '44', '444', '444', '44444', 'Perempuan', 'relawan', '1', 'medan', '8');
+INSERT INTO `admin` VALUES ('12', '333', '333', '333', '111111', 'Perempuan', 'relawan', '1', '', '3');
+INSERT INTO `admin` VALUES ('13', '3424', '123', '1', 'sdfsf', 'BAJENIS', 'relawan', '0', 'medan', '3');
+INSERT INTO `admin` VALUES ('14', '123', '123', '2', 'sadsa', 'PADANG HIL', 'relawan', '0', 'asdad', null);
+INSERT INTO `admin` VALUES ('15', '2313', '123', '', 'joko', 'BAJENIS', 'relawan', '1', 'alamat\r\n', null);
+INSERT INTO `admin` VALUES ('16', '231', '321', '', '1231', 'BAJENIS', 'relawan', '1', 'alamat', null);
+INSERT INTO `admin` VALUES ('17', '213', '34234', '', 'asds', 'BAJENIS', 'relawan', '1', 'dsadsa', null);
+INSERT INTO `admin` VALUES ('18', '342', '432', '123', '342', 'Perempuan', 'relawan', '1', '4324', null);
+INSERT INTO `admin` VALUES ('19', '231', '3213', '123', 'Agus Setiawan', 'Laki-Laki', 'relawan', '1', '321321', '2');
+INSERT INTO `suara` VALUES ('18', '13', '3', '23', '2222', '34', '34', '34', '23', '2018-03-19', '01:34:47', '6', '1', '13-border-20clip-20art-56-Free-Celtic-Vine-Border-Accent-Clipart-Illustration.jpg');
+INSERT INTO `suara` VALUES ('19', '9', '34', '34', '34', '23', '23', '43', '34', '2018-03-21', '00:53:40', null, null, '9-539268_425313630848744_1240671638_n.jpg');
+INSERT INTO `tps` VALUES ('2', 'KOTA TEBING TINGGI', 'BAJENIS', 'BANDAR SAKTI', '12');
+INSERT INTO `tps` VALUES ('3', 'KOTA TEBING TINGGI', 'BAJENIS', 'BEROHOL', '11');
+INSERT INTO `tps` VALUES ('4', 'KOTA TEBING TINGGI', 'BAJENIS', 'BULIAN', '10');
+INSERT INTO `tps` VALUES ('5', 'KOTA TEBING TINGGI', 'BAJENIS', 'PELITA', '9');
+INSERT INTO `tps` VALUES ('6', 'KOTA TEBING TINGGI', 'BAJENIS', 'PINANG MANCUNG', '20');
+INSERT INTO `tps` VALUES ('7', 'KOTA TEBING TINGGI', 'BAJENIS', 'TELUK KARANG', '18');
+INSERT INTO `tps` VALUES ('8', 'KOTA TEBING TINGGI', 'PADANG HILIR', 'BAGELEN', '23');
+INSERT INTO `tps` VALUES ('9', 'KOTA TEBING TINGGI', 'PADANG HILIR', 'SATRIA', '10');
+INSERT INTO `tps` VALUES ('10', 'KOTA TEBING TINGGI', 'PADANG HILIR', 'TAMBANGAN', '12');
+INSERT INTO `tps` VALUES ('11', 'KOTA TEBING TINGGI', 'PADANG HILIR', 'TAMBANGAN HULU', '32');
+INSERT INTO `tps` VALUES ('12', 'KOTA TEBING TINGGI', 'PADANG HILIR', 'TEBING TINGGI', '10');
+INSERT INTO `tps` VALUES ('13', 'KOTA TEBING TINGGI', 'PADANG HILIR', 'DEBLOD SUNDORO', '10');
+INSERT INTO `tps` VALUES ('14', 'KOTA TEBING TINGGI', 'PADANG HILIR', 'DAMAR SARI', '10');
