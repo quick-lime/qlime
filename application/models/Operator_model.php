@@ -15,6 +15,7 @@ class Operator_model extends CI_Model {
 					'jeniskelamin' => $this->input->post('jeniskelamin'),
 					'alamat' => $this->input->post('alamat'),
 					'level' => $this->input->post('level'),
+					'idtps' => $this->input->post('kelurahan'),
 					'status' => 1
 				);
 		$this->db->insert('admin',$data);
@@ -25,10 +26,10 @@ class Operator_model extends CI_Model {
 		$data = array('nik' => $this->input->post('nik'),
 					'nama' => $this->input->post('nama'),
 					'nohp' => $this->input->post('nohp'),
-					'username' => $this->input->post('username'),
 					'password' => $this->input->post('password'),
 					'jeniskelamin' => $this->input->post('jeniskelamin'),
-					'alamat' => $this->input->post('alamat')
+					'alamat' => $this->input->post('alamat'),
+					'idtps' => $this->input->post('kelurahan')
 				);
 		$this->db->where('id',$this->input->get('id'));
 		$this->db->update('admin',$data);
@@ -45,6 +46,7 @@ class Operator_model extends CI_Model {
 	public function get(){
 		$this->db->limit(100);
 		$this->db->where('status','1');
+		$this->db->where('level !=','super');
 		$this->db->order_by('id','DESC');
 		return $this->db->get('admin')->result_array();
 	}
@@ -71,6 +73,11 @@ class Operator_model extends CI_Model {
 		$this->db->where('kecamatan',$kecamatan);
 		$this->db->group_by('kelurahan','DESC');
 		return $this->db->get('tps')->result_array();
+	}
+
+	public function detail_tps($id){
+		$this->db->where('id',$id);
+		return $this->db->get('tps')->row_array();
 	}
 
 }

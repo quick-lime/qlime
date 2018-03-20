@@ -5,7 +5,7 @@
 	}
 </style>
 <!--MAIN CONTENT -->
-	<?php echo form_open('suara/input_suara'); ?>
+	<?php echo form_open_multipart('suara/input_suara'); ?>
 	<div class="main-content">
 		<div class="container-fluid">
 		<h3 class="page-title">TAMBAH DATA SUARA</h3></div>
@@ -15,7 +15,7 @@
 		      <div class="panel-body">
 		      
 			      	<div class="form-group">
-			      		<input type="text" name="no1" required="true" class="form-control" placeholder="Masukan Jumlah Suara">
+			      		<input type="number" name="no1" required="true" class="form-control" placeholder="Masukan Jumlah Suara">
 			      	</div>
 		      	
 		      </div>
@@ -27,7 +27,7 @@
 		      <div class="panel-body">
 		      	
 			      	<div class="form-group">
-			      		<input type="text" name="no2" required="true" class="form-control" placeholder="Masukan Jumlah Suara">
+			      		<input type="number" name="no2" required="true" class="form-control" placeholder="Masukan Jumlah Suara">
 			      	</div>
 		      	
 		      </div>
@@ -39,7 +39,7 @@
 		      <div class="panel-body">
 		      	
 			      	<div class="form-group">
-			      		<input type="text" name="no3" required="true" class="form-control" placeholder="Masukan Jumlah Suara">
+			      		<input type="number" name="no3" required="true" class="form-control" placeholder="Masukan Jumlah Suara">
 			      	</div>
 			      	
 		      </div>

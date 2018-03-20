@@ -7,6 +7,10 @@
 		$pc1 = number_format(100 / $total * $paslon1 , 2);
 		$pc2 = number_format(100 / $total * $paslon2 , 2);
 		$pc3 = number_format(100 / $total * $paslon3 , 2);
+	}else{
+		$pc1 = 0;
+		$pc2 = 0;
+		$pc3 = 0;
 	}
 ?>
 <!doctype html>
@@ -59,7 +63,7 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#"><span class="menu_r" id="ayam">Hasil per Wilayah</span></a></li>
+	        <li><a href="#"><span class="menu_r" id="ayam">Hasil Per Wilayah</span></a></li>
 	      </ul>
 	    </div>
 	  </div>

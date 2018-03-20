@@ -9,24 +9,35 @@
 					<div class="table-responsive">
 							<table id="data" class="table table-striped table-hover">
 								<thead>
-									<th>No.</th>
+									<th width="10px">No</th>
 									<th>Kabupaten</th>
 									<th>Kecamatan</th>
 									<th>Kelurahan</th>
 									<th>TPS</th>
-									<th></th>
+									<th>Relawan</th>
+									<th width="10px">Verifikasi</th>
 								</thead>
 								<tbody>
+								<?php
+									$i=0;
+									foreach ($list as $value) {
+									$relawan = $this->suara_model->detail_relawan($value['idrelawan']);
+									$tps = $this->suara_model->detail_tps($relawan['idtps']);
+									$i++;
+									echo"
 									<tr>
-										<td>1.</td>
-										<td>Kabupaten</td>
-										<td>Kecamatan</td>
-										<td>Kelurahan</td>
-										<td>TPS 1</td>
-										<td>
-											<a href="<?php echo base_url(); ?>suara/ver"><button class="btn btn-info btn-xs" ><span class="fa fa-send"></span></button></a>
+										<td>".$i."</td>
+										<td>".$tps['kabupaten']."</td>
+										<td>".$tps['kecamatan']."</td>
+										<td>".$tps['kelurahan']."</td>
+										<td>".$value['notps']."</td>
+										<td>".$relawan['nama']."</td>
+										<td align='center'>
+											<a href='".base_url()."suara/ver?id=".$value['id']."'><button class='btn btn-info btn-xs' ><span class='fa fa-send'></span></button></a>
 										</td>
-									</tr>
+									</tr>";
+									}
+								?>
 								</tbody>
 							</table>	
 						</div>

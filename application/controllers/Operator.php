@@ -16,22 +16,23 @@ class Operator extends CI_Controller {
 	public function index(){
 		$data['list'] = $this->operator_model->get();
 		$data['isi'] = "operator/page-operator";
-		$data['title'] = 'Data Operator';
+		$data['title'] = 'Data Pengguna';
 		$this->load->view('layout',$data);
 	}
 
 	public function add(){
 		$data['list_kabupaten'] = $this->operator_model->list_kabupaten();
 		$data['isi'] = "operator/add-operator";
-		$data['title'] = 'Tambah Data Operator';
+		$data['title'] = 'Tambah Data Pengguna';
 		$this->load->view('layout',$data);
 	}
 
 
 	public function update(){
+		$data['list_kabupaten'] = $this->operator_model->list_kabupaten();
 		$data['detail'] = $this->operator_model->get_w_id($this->input->get('id'));
 		$data['isi'] = "operator/update-operator";
-		$data['title'] = "Perbarui Data Operator";
+		$data['title'] = "Perbarui Data Pengguna";
 		$this->load->view('layout',$data);
 	}
 

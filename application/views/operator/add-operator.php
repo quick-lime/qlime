@@ -50,7 +50,7 @@
 								    <div id="frelawan">
 									  	<div class="form-group col-md-4">
 									    	<label>Kabupaten</label> 
-									    	<select class="form-control"  name="kabupaten" id="kabupaten">
+									    	<select class="form-control"  id="kabupaten">
 									    		<option value="" disabled selected class="hide">- Pilih Kabupaten -</option>
 										    	<?php
 									    			foreach ($list_kabupaten as $value) {
@@ -61,7 +61,7 @@
 									    </div>
 									    <div class="form-group col-md-4">
 									    	<label>Kecamatan</label> 
-									    	<select class="form-control" id="kecamatan" name="jeniskelamin">
+									    	<select class="form-control" id="kecamatan" >
 									    		<option value="" disabled selected class="hide">- Pilih Kecamatan -</option>
 										    	<!--  Isi List Kecamatan Setelah Kabupaten di pilih -->
 										    </select>
