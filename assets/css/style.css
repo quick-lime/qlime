@@ -3,9 +3,7 @@ html {
   min-height: 100%; }
 
 body {
-  background-image: url(../../assets/img/bgbody.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #fff; 
   font-family: "Source Sans Pro", sans-serif;
   font-size: 15px;
   color: #676a6d; }

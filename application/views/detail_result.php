@@ -1,23 +1,9 @@
-<?php
-	$paslon1 = $data['tpaslon1'];
-	$paslon2 = $data['tpaslon2'];
-	$paslon3 = $data['tpaslon3'];
-	$total = $paslon1 + $paslon2 + $paslon3;
-	if($total > 0){
-		$pc1 = number_format(100 / $total * $paslon1 , 2);
-		$pc2 = number_format(100 / $total * $paslon2 , 2);
-		$pc3 = number_format(100 / $total * $paslon3 , 2);
-	}else{
-		$pc1 = 0;
-		$pc2 = 0;
-		$pc3 = 0;
-	}
-?>
+
 <!doctype html>
 <html lang="en">
 
 <head>
-	<title >QLime &mdash; Quick Count 2018</title>
+	<title >QLime &mdash; <?php echo $title; ?></title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -46,114 +32,80 @@
        $('#load_content').load('<?php echo base_url() ?>welcome/data').fadeIn("slow");
     }, 2000);
     
-</script>
-	<style type="text/css">
-		body{
-			background-image: url('<?php echo base_url() ?>assets/img/bgbody.jpg');
-		  background-repeat: no-repeat;
-		  background-size: cover;
-		}
-	</style>
+	</script>
 </head>
 
 <body>
 	<!-- NAVBAR -->
 	<nav class="navbar navbar-default">
 	  <div class="container">
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" id="custom-toggle" data-toggle="collapse" data-target="#myNavbar">
-	        <span class="icon-bar" id="custom-icon"></span>
-	        <span class="icon-bar" id="custom-icon"></span>
-	        <span class="icon-bar" id="custom-icon"></span> 
-	      </button>		
+	    <div class="navbar-header">	
 	      <a class="navbar-brand" href="#"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
-	    </div>
-	    <div class="collapse navbar-collapse" id="myNavbar">
-	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="<?php echo base_url() ?>welcome/result"><span class="menu_r" id="ayam">Hasil Per Wilayah</span></a></li>
-	      </ul>
 	    </div>
 	  </div>
 	</nav>
-	<div class="goal">
-		<h3>Hitung Cepat Hasil Pilkada</h3>
-		<h4>Pilkada Sumatera Utara 27 Juni 2018</h4>
-	</div>
+	<!-- END NAVBAR -->
+
+	<!-- CONTENT -->
 	<div class="container">
-		<div class="col-lg-4" style="margin-bottom: 20px;">
-			<img src="<?php echo base_url() ?>assets/img/edysihar.png" class="img-responsive center">
-			<div class="poling">
-				<div class="col-md-12">
-					<div id="name">
-						<p>Edy Rahmayadi</p>
-						<p>Musa Rajekshah</p>
-					</div>
-					<span id="percen" class="p1"><?php echo $pc1; ?>%</span>
-					<span id="suara" class="s1"><?php echo $paslon1; ?> Suara</span>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4" style="margin-bottom: 20px;">
-			<img src="<?php echo base_url() ?>assets/img/djarot-sihar-jpnn.png" style="width: 93%;" class="center">
-			<div class="poling">
-				<div class="col-md-12">
-					<div id="name">
-						<p>Djarot S Hidayat</p>
-						<p>Sihar Sitorus</p>
-					</div>
-					<span id="percen" class="p2"><?php echo $pc2; ?>%</span>
-					<span id="suara" class="s2"><?php echo $paslon2; ?> Suara</span>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4" style="margin-bottom: 20px;">
-			<img src="<?php echo base_url() ?>assets/img/paslon3.png"  style="width: 82%;" class="center">
-			<div class="poling">
-				<div class="col-md-12">
-					<div id="name">
-						<p>JR Saragih</p>
-						<p>Ance Selian</p>
-					</div>
-					<span id="percen" class="p3"><?php echo $pc3; ?>% </span>
-					<span id="suara" class="s3"><?php echo $paslon3; ?> Suara</span>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4" style="margin-bottom: 20px;">
-			<div class="total-poling">
-				<div class="col-md-12">
-					<div id="name-2">
-						<p>Total Suara</p>
-					</div>
-					<span id="percen-2" class="ts"><?php echo $total; ?></span>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4" style="margin-bottom: 20px;">
-			<div class="total-poling">
-				<div class="col-md-12">
-					<div id="name-2">
-						<p>Total Masuk Tps</p>
-					</div>
-					<span id="percen-2" class="tt">21.332</span>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4" style="margin-bottom: 20px;">
-			<div class="total-poling">
-				<div class="col-md-12">
-					<div id="name-2">
-						<p>Tps Yang Diambil</p>
-					</div>
-					<span id="percen-2" class="ts"><?php echo $total; ?></span>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-12 text-center" style="margin-bottom: 50px;"> 
-		    <a href="<?php echo base_url() ?>welcome/result" id="singlebutton" name="singlebutton" class="btn btn-danger ">Hasil per Wilayah</a>
-		</div>
+		<h3>Hasil per Wilayah</h3>
+		<div class="table-responsive">
+			<table class="table table-bordered" id="data">
+				<thead>
+					<th width="10">No.</th>
+					<th>Kabupaten/Kota</th>
+					<th>Pemilih</th>
+					<th>Suara</th>
+					<th>Hasil</th>
+					<th>Data Masuk</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1.</td>
+						<td><a href="#">Kabupaten Asahan</a></td>
+						<td>
+							<table class="table table-hover">
+								<tr>
+									<td>Pemilih</td>
+									<td>123</td>
+								</tr>
+								<tr>
+									<td>Pengguna Hak Pilih</td>
+									<td>123</td>
+								</tr>
+								<tr>
+									<td>Partisipasi</td>
+									<td>123</td>
+								</tr>
+							</table>
+						</td>
+						<td>
+							<table class="table table-hover">
+								<tr>
+									<td>Suara Sah</td>
+									<td>123</td>
+								</tr>
+								<tr>
+									<td>Suara Tidak Sah</td>
+									<td>123</td>
+								</tr>
+								<tr>
+									<td>Total Suara</td>
+									<td>123</td>
+								</tr>
+							</table>
+						</td>
+						<td>
+							<canvas id="pilgubChart" width="100" height="100"></canvas>
+						</td>
+						<td>1234 / 1234 TPS</td>
+					</tr>		
+				</tbody>
+			</table>
+		</div>	
 	</div>
-	<footer class="footer" style="padding-top: 15px;"><span>&copy; 2018 - <a href="#">QLime</a> All Rights Reserved.</span></footer>
+	<!-- END CONTENT -->
+
 	<!-- Javascript -->
 	<script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -187,7 +139,7 @@
 	    });
 	</script>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	$(document).ready(function() {
 		function get_json(){
 			$.ajax({url: "welcome/get_json", 
@@ -218,13 +170,13 @@
 		    color:'#bbb'
 	    });
 	});
-	</script>
+	</script> -->
 
 	<!-- CHART -->
 	<script>
 	var pilgub = document.getElementById("pilgubChart");
 
-	Chart.defaults.global.defaultFontSize = 16;
+	Chart.defaults.global.defaultFontSize = 11;
 
 	var pilgubData = {
 	    labels: [
@@ -234,7 +186,7 @@
 	    ],
 	    datasets: [
 	        {
-	            data: [<?php echo $pc1; ?>, <?php echo $pc2; ?>, <?php echo $pc3; ?>],
+	            data: [20,30,10],
 	            backgroundColor: [ 
 	                "#e6ed31",
 	                "#d3242b",

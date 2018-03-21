@@ -13,6 +13,11 @@ class Welcome extends CI_Controller {
 		$this->load->view('layout_result',$data);
 	}
 
+	public function result(){
+		$data['title'] = 'Hasil per Wilayah';
+		$this->load->view('detail_result',$data);
+	}
+
 	public function get_json(){
 		
 		$data['suara1'] = $this->welcome_model->data()['tpaslon1'];
