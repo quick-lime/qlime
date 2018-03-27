@@ -13,6 +13,11 @@ class Welcome extends CI_Controller {
 		$this->load->view('layout_result',$data);
 	}
 
+	public function kodewilayah(){
+		$data['title'] = 'Kode per Wilayah';
+		$this->load->view('kodewilayah',$data);
+	}
+
 	public function result(){
 		$data['title'] = 'Hasil per Wilayah';
 		$this->load->view('detail_result',$data);

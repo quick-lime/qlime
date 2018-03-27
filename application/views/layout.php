@@ -38,7 +38,14 @@
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
 				</div>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<?php echo base_url('welcome/logout'); ?>" id="log" "><span class="fa fa-sign-out"></span> Logout</a></li>
+				<li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="log">Administrator <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#"><span class="fa fa-edit"> Ganti Password</span></a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="<?php echo base_url('welcome/logout'); ?>"><span class="fa fa-sign-out"></span> Logout</a></li>
+			          </ul>
+			        </li>
 			    </ul>
 			</div>
 		</nav>
@@ -56,12 +63,12 @@
 						$level = $this->session->userdata('level');
 						if($level == "super"){ ?>
 						<li><a href="<?php echo base_url(); ?>dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-						<li><a href="<?php echo base_url(); ?>paslon"><i class="fa fa-user"></i> <span>Data Paslon</span></a></li>
+						<!-- <li><a href="<?php echo base_url(); ?>paslon"><i class="fa fa-user"></i> <span>Data Paslon</span></a></li> -->
 						<li><a href="<?php echo base_url(); ?>tps"><i class="fa fa-archive"></i> <span>Data Wilayah</span></a></li>
 						<li><a href="<?php echo base_url(); ?>operator"><i class="fa fa-users"></i> <span>Data Pengguna</span></a></li>
+						<li><a href="<?php echo base_url(); ?>setting"><i class="fa fa-gear"></i> <span>Pengaturan</span></a></li>
 						<?php } ?>
 						<!-- End Login Super -->
-
 						
 						<!-- Level Login Admin/ Operator -->
 						<?php if($level == "admin"){ ?>
@@ -69,14 +76,11 @@
 						<li><a href="<?php echo base_url(); ?>suara/view"><i class="fa fa-bar-chart"></i> <span>Verifikasi Suara</span></a></li>
 						<?php } ?>
 						<!-- end Login ADmin -->
-
 						<!-- Level Login Relawan -->
 						<?php if($level == "relawan"){ ?>
 						<li><a href="<?php echo base_url(); ?>suara"><i class="fa fa-archive"></i> <span>Data Suara</span></a></li>
 						<?php } ?>
 						<!-- End Login Relawan -->
-
-
 					</ul>
 				</nav>
 			</div>
@@ -106,7 +110,6 @@
 	<script src="<?php echo base_url(); ?>assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/scripts/klorofil-common.js"></script>
-
 	<!-- DATA TABLES -->
 	<script src="<?php echo base_url(); ?>assets/js/dataTables/jquery.dataTables.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url(); ?>assets/js/dataTables/dataTables.bootstrap.min.js" type="text/javascript"></script>
