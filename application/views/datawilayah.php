@@ -40,7 +40,7 @@
 	<nav class="navbar navbar-default">
 	  <div class="container">
 	    <div class="navbar-header">	
-	      <a class="navbar-brand" href="#"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
+	      <a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
 	    </div>
 	  </div>
 	</nav>
@@ -48,22 +48,38 @@
 
 	<!-- CONTENT -->
 	<div class="container">
-		<h3>Kode per Wilayah</h3>
+		<h3>Data Wilayah</h3>
 		<div class="table-responsive">
-			<table class="table table-bordered" id="data">
+			<table id="data" class="table table-striped table-hover">
 				<thead>
-					<th width="10">No.</th>
-					<th>Kabupaten/Kota</th>
-					<th>Kode</th>
+					<th>No.</th>
+					<th>Kabupaten</th>
+					<th>Kecamatan</th>
+					<th>Kelurahan</th>
+					<th>Jlh TPS</th>
+					<th>Jlh Relawan</th>
+					<th>ID Wilayah</th>
 				</thead>
 				<tbody>
+					<?php
+					$i=0;
+					foreach ($list as $value) {
+					$jlh_relawan = count($this->tps_model->jlh_relawan_tps($value['id']));
+					$i++;
+					echo"
 					<tr>
-						<td>1.</td>
-						<td><a href="#">Kabupaten Asahan</a></td>
-						<td>1234</td>
-					</tr>		
+						<td>".$i."</td>
+						<td>".$value['kabupaten']."</td>
+						<td>".$value['kecamatan']."</td>
+						<td>".$value['kelurahan']."</td>
+						<td>".$value['jlhtps']."</td>
+						<td>".$jlh_relawan."</td>
+						<td>".$value['id']."</td>
+					</tr>";
+					}
+					?>
 				</tbody>
-			</table>
+			</table>	
 		</div>	
 	</div>
 	<!-- END CONTENT -->

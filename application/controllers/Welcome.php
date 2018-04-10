@@ -6,6 +6,8 @@ class Welcome extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('welcome_model');
+		$this->load->model('tps_model');
+		$this->load->model('suara_model');
 	}
 
 	public function index(){
@@ -13,24 +15,31 @@ class Welcome extends CI_Controller {
 		$this->load->view('layout_result',$data);
 	}
 
-	public function kodewilayah(){
-		$data['title'] = 'Kode per Wilayah';
-		$this->load->view('kodewilayah',$data);
+	public function datawilayah(){
+		$data['list'] = $this->tps_model->list_data();
+		$data['title'] = 'Data Wilayah';
+		$this->load->view('datawilayah',$data);
 	}
 
 	public function result(){
-		$data['title'] = 'Hasil per Wilayah';
+		$data['list_kabupaten'] = $this->welcome_model->wilayah_kabupaten();
+		$data['title'] = 'Hasil Per Wilayah';
 		$this->load->view('detail_result',$data);
 	}
 
 	public function get_json(){
 		
-		$data['suara1'] = $this->welcome_model->data()['tpaslon1'];
-		$data['suara2'] = $this->welcome_model->data()['tpaslon2'];
-		$data['suara3'] = $this->welcome_model->data()['tpaslon3'];
+		$data['suara1'] = $this->welcome_model->data()['tpaslon1'] + $this->welcome_model->data_kesempatan()['ktpaslon1'];
+		$data['suara2'] = $this->welcome_model->data()['tpaslon2'] + $this->welcome_model->data_kesempatan()['ktpaslon2'];
+		$data['suara3'] = $this->welcome_model->data()['tpaslon3'] + $this->welcome_model->data_kesempatan()['ktpaslon3'];
+
 		$data['totalsuara'] = $this->welcome_model->data()['tpaslon1'] + 
 							  $this->welcome_model->data()['tpaslon2'] +
-							  $this->welcome_model->data()['tpaslon3'];
+							  $this->welcome_model->data()['tpaslon3'] +
+							  $this->welcome_model->data_kesempatan()['ktpaslon1'] +
+							  $this->welcome_model->data_kesempatan()['ktpaslon2'] +
+							  $this->welcome_model->data_kesempatan()['ktpaslon3']
+							  ;
 		
 		if($data['totalsuara'] > 0){
 			$data['persen1'] = number_format((100 / $data['totalsuara']) * $data['suara1'], 2);
@@ -60,6 +69,7 @@ class Welcome extends CI_Controller {
 				'nama' => $get['nama'],
 				'level' => $get['level'],
 				'password' => $get['password'],
+				'idtps' => $get['idtps'],
 				'id' => $get['id']);
 			$this->session->set_userdata($data_session);
 			if($get['level'] ==  "relawan"){

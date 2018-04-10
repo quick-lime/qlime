@@ -7,9 +7,10 @@ class Suara extends CI_Controller {
 		parent::__construct();
 		$this->load->library('session');
 		$this->load->model('suara_model');
+		$this->load->model('tps_model');
 
 		$level = $this->session->userdata('level');
-		if($level == "admin" || $level == "relawan"){}else{
+		if($level == "admin" || $level == "relawan" || $level == "super"){}else{
 			redirect(base_url());
 		}
 	}
@@ -18,6 +19,7 @@ class Suara extends CI_Controller {
 		$ssid = $this->session->userdata('id');
 		$cek = $this->suara_model->cek_input($ssid);
 		if(count($cek) >= 1){
+			$data['wilayah'] = $this->tps_model->detail_tps($this->session->userdata('idtps'));
 			$data['view'] = $cek[0];
 			$data['isi'] = "suara/view-suara";
 			$data['title'] = 'Data Suara Telah masuk';
@@ -29,50 +31,65 @@ class Suara extends CI_Controller {
 		}
 	}
 
+	public function ralat_suara(){
+		$data['detail'] = $this->suara_model->detail_suara($this->input->get('id'));
+		$data['isi'] = "suara/edit-suara2";
+		$data['title'] = 'Perbarui Data Suara';
+		$this->load->view('layout',$data);
+	}
+
 	public function input_suara(){
-
-		$ssid = $this->session->userdata('id');
-		
-		$config['upload_path']          = 'assets/fotover/';
-        $config['allowed_types']        = 'jpg|png';
-        $config['max_size']             = 5000;
-        $new_name = $ssid."-".$_FILES["foto"]['name'];
-		$config['file_name'] = $new_name;
-
-        $this->load->library('upload', $config);
-
-        if(!$this->upload->do_upload('foto')){
-        	redirect('suara');
-        }else{
-        	$this->suara_model->input_suara();
-			redirect('suara');
-        }
+        $this->suara_model->input_suara();
+		redirect('suara');
 	}
 
 	public function view(){
-		$data['list'] = $this->suara_model->list_ver();
+		$data['list'] = $this->suara_model->list_suara();
 		$data['isi'] = "suara/page-suara";
-		$data['title'] = 'Verifikasi Data Suara';
+		$data['title'] = 'Data Suara Masuk';
 		$this->load->view('layout',$data);
 	}
 
-	public function ver(){
+	public function edit_suara(){
 		$data['detail'] = $this->suara_model->detail_suara($this->input->get('id'));
-		$data['isi'] = "suara/ver-suara";
-		$data['title'] = 'Verifikasi Data Suara';
+		$data['isi'] = "suara/edit-suara";
+		$data['title'] = 'Perbarui Data Suara';
 		$this->load->view('layout',$data);
 	}
 
-	public function proses_ver(){
-		if(!empty($this->input->post('update'))){
-			// update
-			$this->suara_model->ver_update_data($this->input->get('id'));
-			redirect('suara/view');
-		}else{
-			$this->suara_model->ver_data($this->input->get('id'));
-			redirect('suara/view');
-		}
+	public function proses_edit(){
+		$this->suara_model->update_data($this->input->get('id'));
+		redirect('suara/view');
 	}
 
+	public function proses_edit2(){
+		$this->suara_model->update_data2($this->input->get('id'));
+		redirect('suara');
+	}
+
+	public function input_kesempatan(){
+		$data['detail'] = $this->suara_model->detail_suara($this->input->get('id'));
+		$data['isi'] = "suara/form-kesempatan";
+		$data['title'] = 'Tambah Data Suara Kesempatan';
+		$this->load->view('layout',$data);
+	}
+
+	public function proses_input_kesempatan(){
+		$this->suara_model->input_kesempatan();
+		redirect('suara');
+	}
+
+	public function ralat_kesempatan(){
+		$data['detail'] = $this->suara_model->detail_kesempatan($this->input->get('idsuara'));
+		$data['detail_suara'] = $this->suara_model->detail_suara($this->input->get('idsuara'));
+		$data['isi'] = "suara/edit-kesempatan";
+		$data['title'] = 'Perbarui Data Suara Kesempatan';
+		$this->load->view('layout',$data);
+	}
+
+	public function proses_ralat_kesempatan(){
+		$this->suara_model->ralat_kesempatan();
+		redirect('suara');
+	}
 
 }

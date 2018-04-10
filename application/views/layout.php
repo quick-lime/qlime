@@ -63,7 +63,7 @@
 						$level = $this->session->userdata('level');
 						if($level == "super"){ ?>
 						<li><a href="<?php echo base_url(); ?>dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-						<!-- <li><a href="<?php echo base_url(); ?>paslon"><i class="fa fa-user"></i> <span>Data Paslon</span></a></li> -->
+						<li><a href="<?php echo base_url(); ?>suara/view"><i class="fa fa-bar-chart"></i> <span>Suara Masuk</span></a></li>
 						<li><a href="<?php echo base_url(); ?>tps"><i class="fa fa-archive"></i> <span>Data Wilayah</span></a></li>
 						<li><a href="<?php echo base_url(); ?>operator"><i class="fa fa-users"></i> <span>Data Pengguna</span></a></li>
 						<li><a href="<?php echo base_url(); ?>setting"><i class="fa fa-gear"></i> <span>Pengaturan</span></a></li>
@@ -73,7 +73,7 @@
 						<!-- Level Login Admin/ Operator -->
 						<?php if($level == "admin"){ ?>
 						<li><a href="<?php echo base_url(); ?>dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-						<li><a href="<?php echo base_url(); ?>suara/view"><i class="fa fa-bar-chart"></i> <span>Verifikasi Suara</span></a></li>
+						<li><a href="<?php echo base_url(); ?>suara/view"><i class="fa fa-bar-chart"></i> <span>Suara Masuk</span></a></li>
 						<?php } ?>
 						<!-- end Login ADmin -->
 						<!-- Level Login Relawan -->

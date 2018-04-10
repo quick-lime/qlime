@@ -39,8 +39,8 @@
 	<!-- NAVBAR -->
 	<nav class="navbar navbar-default">
 	  <div class="container">
-	    <div class="navbar-header">	
-	      <a class="navbar-brand" href="#"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
 	    </div>
 	  </div>
 	</nav>
@@ -48,58 +48,74 @@
 
 	<!-- CONTENT -->
 	<div class="container">
-		<h3>Hasil per Wilayah</h3>
+		<h3>Perhitungan PerKabupaten</h3>
 		<div class="table-responsive">
 			<table class="table table-bordered" id="data">
 				<thead>
-					<th width="10">No.</th>
+					<th width="10px">No.</th>
 					<th>Kabupaten/Kota</th>
-					<th>Pemilih</th>
 					<th>Suara</th>
-					<th>Hasil</th>
+					<th width="200px">Hasil</th>
 					<th>Data Masuk</th>
 				</thead>
 				<tbody>
+				<?php
+					$i=0;
+					foreach ($list_kabupaten as $value) {
+						$i++;
+						$dpt = 0;
+						$calon1 = 0;
+						$calon2 = 0 ;
+						$calon3 = 0;
+						$tidaksah = 0;
+						$tps_masuk = 0;
+						$jlh_tps = 0 ;
+						//Mengambil ID Wilayah
+						$tps = $this->tps_model->list_kabupaten($value['kabupaten']);
+						foreach ($tps as $tps) {
+							$jlh_tps = $jlh_tps + $tps['jlhtps'];
+							//Mencari Suara Berdasarkan ID Wilayah Yang Sama
+							$suara = $this->welcome_model->list_suara_idtps($tps['id']);
+							foreach ($suara as $suara) {
+								$tps_masuk++;
+								$kesempatan = $this->suara_model->detail_kesempatan($suara['id']);
+								$dpt = $dpt + $suara['dpt'];	
+								$calon1 = $calon1 + $suara['calon1'] + $kesempatan['calon1'];
+								$calon2 = $calon2 + $suara['calon2'] + $kesempatan['calon2'];
+								$calon3 = $calon3 + $suara['calon3'] + $kesempatan['calon3'];
+								$tidaksah = $tidaksah + $suara['tidaksah'] + $kesempatan['tidaksah'];
+							}
+						}
+						$suara_sah = $calon1 + $calon2 + $calon3;
+						$total_suara = $calon1 + $calon2 + $calon3 + $tidaksah;
+
+					echo "
 					<tr>
-						<td>1.</td>
-						<td><a href="#">Kabupaten Asahan</a></td>
+						<td>".$i."</td>
+						<td><a href='#'>".$value['kabupaten']."</a></td>
 						<td>
-							<table class="table table-hover">
-								<tr>
-									<td>Pemilih</td>
-									<td>123</td>
-								</tr>
-								<tr>
-									<td>Pengguna Hak Pilih</td>
-									<td>123</td>
-								</tr>
-								<tr>
-									<td>Partisipasi</td>
-									<td>123</td>
-								</tr>
-							</table>
-						</td>
-						<td>
-							<table class="table table-hover">
+							<table class='table table-hover'>
 								<tr>
 									<td>Suara Sah</td>
-									<td>123</td>
+									<td align='right'>".$suara_sah."</td>
 								</tr>
 								<tr>
 									<td>Suara Tidak Sah</td>
-									<td>123</td>
+									<td align='right'>".$tidaksah."</td>
 								</tr>
 								<tr>
 									<td>Total Suara</td>
-									<td>123</td>
+									<td align='right'>".$total_suara."</td>
 								</tr>
 							</table>
 						</td>
 						<td>
-							<canvas id="pilgubChart" width="100" height="100"></canvas>
+							<canvas id='pilgubChart".$i."' width='100px' height='100px'></canvas>
 						</td>
-						<td>1234 / 1234 TPS</td>
-					</tr>		
+						<td>".$tps_masuk." / ".$jlh_tps." TPS</td>
+					</tr>";
+					}
+				?>		
 				</tbody>
 			</table>
 		</div>	
@@ -172,49 +188,71 @@
 	});
 	</script> -->
 
-	<!-- CHART -->
-	<script>
-	var pilgub = document.getElementById("pilgubChart");
+	<?php
+		$i=0;
+		foreach ($list_kabupaten as $value) {
+			$i++;
+			$dpt = 0;
+			$calon1 = 0;
+			$calon2 = 0 ;
+			$calon3 = 0;
+			$tidaksah = 0;
+			$tps_masuk = 0;
+			$jlh_tps = 0 ;
+			//Mengambil ID Wilayah
+			$tps = $this->tps_model->list_kabupaten($value['kabupaten']);
+			foreach ($tps as $tps) {
+				$jlh_tps = $jlh_tps + $tps['jlhtps'];
+				//Mencari Suara Berdasarkan ID Wilayah Yang Sama
+				$suara = $this->welcome_model->list_suara_idtps($tps['id']);
+				foreach ($suara as $suara) {
+					$tps_masuk++;
+					$kesempatan = $this->suara_model->detail_kesempatan($suara['id']);
+					$dpt = $dpt + $suara['dpt'];	
+					$calon1 = $calon1 + $suara['calon1'] + $kesempatan['calon1'];
+					$calon2 = $calon2 + $suara['calon2'] + $kesempatan['calon2'];
+					$calon3 = $calon3 + $suara['calon3'] + $kesempatan['calon3'];
+					$tidaksah = $tidaksah + $suara['tidaksah'] + $kesempatan['tidaksah'];
+				}
+			}
+			$suara_sah = $calon1 + $calon2 + $calon3;
+			$total_suara = $calon1 + $calon2 + $calon3 + $tidaksah;
+	?>
+			<script>
+			var pilgub<?php echo $i; ?> = document.getElementById("pilgubChart<?php echo $i; ?>");
+			Chart.defaults.global.defaultFontSize = 11;
+			var pilgubData<?php echo $i; ?> = {
+			    labels: [
+			        "Edy Rahmayadi - Musa R",
+			        "Djarot S - Sihar Sitorus",
+			        "JR Saragih - Ance Selian",
+			    ],
+			    datasets: [
+			        {
+			            data: [<?php echo $calon1.",".$calon2.",".$calon3; ?>],
+			            backgroundColor: [ 
+			                "#e6ed31",
+			                "#d3242b",
+			                "#31a9ed",
+			            ]
+			        }]
+			};
 
-	Chart.defaults.global.defaultFontSize = 11;
+			var options = {
+				legend : {
+					display : true,
+					position : "bottom"
+				}
+			};
 
-	var pilgubData = {
-	    labels: [
-	        "Edy Rahmayadi - Musa R",
-	        "Djarot S - Sihar Sitorus",
-	        "JR Saragih - Ance Selian",
-	    ],
-	    datasets: [
-	        {
-	            data: [20,30,10],
-	            backgroundColor: [ 
-	                "#e6ed31",
-	                "#d3242b",
-	                "#31a9ed",
-	            ]
-	        }]
-	};
+			var pieChart = new Chart(pilgub<?php echo $i; ?>, {
+			  type: 'pie',
+			  data: pilgubData<?php echo $i; ?>,
+			  options : options
+			});
+			</script>
 
-	var options = {
-		legend : {
-			display : true,
-			position : "bottom"
-		}
-	};
-
-	var pieChart = new Chart(pilgub, {
-	  type: 'pie',
-	  data: pilgubData,
-	  options : options
-	});
-
-
-	</script>
-
-	<!-- EXAMPLE -->
-
-	<!-- CHART -->
+	<?php } ?>
 
 </body>
-
 </html>

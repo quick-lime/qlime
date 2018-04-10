@@ -9,15 +9,16 @@ class Suara_model extends CI_Model {
 
 	function input_suara(){
 		$ssid = $this->session->userdata('id');
+		$idtps = $this->session->userdata('idtps');
 		$data = array('idrelawan' => $ssid,
 					'notps' => $this->input->post('notps'),
+					'idtps' => $idtps,
 					'calon1' => $this->input->post('no1'),
 					'calon2' => $this->input->post('no2'),
 					'calon3' => $this->input->post('no3'),
 					'tidaksah' => $this->input->post('tidaksah'),
 					'kesempatan' => $this->input->post('kesempatan'),
 					'dpt' => $this->input->post('dpt'),
-					'foto' => $this->upload->data('file_name'),
 					'tanggal' => date('Y-m-d'),
 					'jam' => date('H:i:s')
 		);
@@ -30,8 +31,7 @@ class Suara_model extends CI_Model {
 		return $this->db->get('suara')->result_array();
 	}
 
-	public function list_ver(){
-		$this->db->where('verifikasi', null);
+	public function list_suara(){
 		return $this->db->get('suara')->result_array();
 	}
 
@@ -50,18 +50,12 @@ class Suara_model extends CI_Model {
 		return $this->db->get('suara')->row_array();
 	}
 
-	public function ver_data($id){
-		$ssid = $this->session->userdata('id');
-		$data = array(
-					'idadmin' => $ssid,
-					'verifikasi' => 1 
-					);
-		$this->db->where('id',$id);
-		$this->db->update('suara',$data);
-		return;
+	public function detail_kesempatan($id){
+		$this->db->where('idsuara', $id);
+		return $this->db->get('kesempatan')->row_array();
 	}
 
-	public function ver_update_data(){
+	public function update_data($id){
 		$ssid = $this->session->userdata('id');
 		$data = array('notps' => $this->input->post('notps'),
 					'calon1' => $this->input->post('no1'),
@@ -70,12 +64,60 @@ class Suara_model extends CI_Model {
 					'tidaksah' => $this->input->post('tidaksah'),
 					'kesempatan' => $this->input->post('kesempatan'),
 					'dpt' => $this->input->post('dpt'),
-					'idadmin' => $ssid,
-					'verifikasi' => 1 
+					'idadmin' => $ssid
 					);
 		$this->db->where('id',$id);
 		$this->db->update('suara',$data);
 		return;
+	}
+
+	public function update_data2($id){
+		$data = array(
+					'notps' => $this->input->post('notps'),
+					'calon1' => $this->input->post('no1'),
+					'calon2' => $this->input->post('no2'),
+					'calon3' => $this->input->post('no3'),
+					'tidaksah' => $this->input->post('tidaksah'),
+					'kesempatan' => $this->input->post('kesempatan'),
+					'dpt' => $this->input->post('dpt'),
+					'tanggal' => date('Y-m-d'),
+					'jam' => date('H:i:s')
+		);
+		$this->db->where('id',$id);
+		$this->db->update('suara',$data);
+		return;
+	}
+
+	public function input_kesempatan(){
+		$data = array('idsuara' => $this->input->get('idsuara'),
+					'calon1' => $this->input->post('no1'),
+					'calon2' => $this->input->post('no2'),
+					'calon3' => $this->input->post('no3'),
+					'tidaksah' => $this->input->post('tidaksah'),
+					'tanggal' => date('Y-m-d'),
+					'jam' => date('H:i:s')
+		);
+		$this->db->insert('kesempatan',$data);
+		return;
+	}
+
+	public function ralat_kesempatan(){
+		$data = array(
+					'calon1' => $this->input->post('no1'),
+					'calon2' => $this->input->post('no2'),
+					'calon3' => $this->input->post('no3'),
+					'tidaksah' => $this->input->post('tidaksah'),
+					'tanggal' => date('Y-m-d'),
+					'jam' => date('H:i:s')
+		);
+		$this->db->where('idsuara', $this->input->get('idsuara'));
+		$this->db->update('kesempatan',$data);
+		return;
+	}
+
+	public function cek_isi_kesempatan($id){
+		$this->db->where('idsuara', $id);
+		return $this->db->get('kesempatan')->num_rows();
 	}
 
 

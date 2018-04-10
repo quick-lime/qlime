@@ -4,9 +4,8 @@
 					<h3 class="page-title"><?php echo $title; ?></h3>
 					<div class="panel panel-default">
 					    	<div class="panel-body">
-								<?php echo form_open('suara/proses_ver?id='.$detail['id']); ?>
-									<img class="thumbnail zoom img-responsive center"  width="400" src="<?php echo base_url(); ?>assets/fotover/<?php echo $detail['foto']; ?>">
-								  	<div class="form-group">
+								<?php echo form_open('suara/proses_edit?id='.$detail['id']); ?>
+									<div class="form-group">
 								  	<div class="form-group col-md-4">
 								  		<label>Paslon 1</label>
 								  		<input type="number" class="form-control" value="<?php echo $detail['calon1'] ?>" placeholder="Paslon 1" required="" name="no1">
@@ -36,9 +35,8 @@
 								  		<input type="number" class="form-control" value="<?php echo $detail['notps'] ?>"  placeholder="Kesempatan Memilih" required="" name="notps">
 								  	</div>
 								    <div  class="form-group col-md-12">
-								    	<button type="submit" class="btn btn-info" style="margin-bottom: 10px;"><span class="fa fa-send"></span> Kirim</button>
-								    	<button type="submit" value="update" name='update' class="btn btn-success" style="margin-bottom: 10px;"><span class="fa fa-send" ></span> Kirim & Update</button>
-								    	<a href="<?php echo base_url(); ?>suara/view" class="btn btn-warning" style="margin-bottom: 10px;""><span class="fa fa-list"></span> Data Verifikasi</a>
+								    	<button type="submit" value="update" name='update' class="btn btn-success" style="margin-bottom: 10px;"><span class="fa fa-send" ></span> Perbarui Data suara</button>
+								    	<a href="<?php echo base_url(); ?>suara/view" class="btn btn-warning" style="margin-bottom: 10px;""><span class="fa fa-list"></span> Data Suara</a>
 								    	<button type="reset" class="btn btn-danger" style="margin-bottom: 10px;"><span class="fa fa-remove"></span> Batal</button>
 									</div>
 								  	</div>

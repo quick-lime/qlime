@@ -66,12 +66,12 @@
 	        <span class="icon-bar" id="custom-icon"></span>
 	        <span class="icon-bar" id="custom-icon"></span> 
 	      </button>		
-	      <a class="navbar-brand" href="#"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
+	      <a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>assets/img/logo3.png"></a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav navbar-right">
 	        <li><a href="<?php echo base_url() ?>welcome/result"><span class="menu_r" id="ayam">Hasil Per Wilayah</span></a></li>
-			<li><a href="<?php echo base_url() ?>welcome/kodewilayah"><span class="menu_r" id="ayam">Kode Wilayah</span></a></li>
+			<li><a href="<?php echo base_url() ?>welcome/datawilayah"><span class="menu_r" id="ayam">Data Wilayah</span></a></li>
 	      </ul>
 	    </div>
 	  </div>

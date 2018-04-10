@@ -13,9 +13,9 @@
 									<th>Kabupaten</th>
 									<th>Kecamatan</th>
 									<th>Kelurahan</th>
-									<th>TPS</th>
+									<th>No TPS</th>
 									<th>Relawan</th>
-									<th width="10px">Verifikasi</th>
+									<th width="10px">Proses</th>
 								</thead>
 								<tbody>
 								<?php
@@ -33,7 +33,7 @@
 										<td>".$value['notps']."</td>
 										<td>".$relawan['nama']."</td>
 										<td align='center'>
-											<a href='".base_url()."suara/ver?id=".$value['id']."'><button class='btn btn-info btn-xs' ><span class='fa fa-send'></span></button></a>
+											<a href='".base_url()."suara/edit_suara?id=".$value['id']."'><button class='btn btn-info btn-xs' ><span class='fa fa-send'></span></button></a>
 										</td>
 									</tr>";
 									}

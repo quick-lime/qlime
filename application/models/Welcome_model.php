@@ -20,16 +20,31 @@ class Welcome_model extends CI_Model {
 	}
 
 	public function data(){
-		$this->db->where('verifikasi',1);
 		$this->db->select('sum(calon1) as tpaslon1');
 		$this->db->select('sum(calon2) as tpaslon2');
 		$this->db->select('sum(calon3) as tpaslon3');
 		return $this->db->get('suara')->row_array();
 	}
 
+	public function data_kesempatan(){
+		$this->db->select('sum(calon1) as ktpaslon1');
+		$this->db->select('sum(calon2) as ktpaslon2');
+		$this->db->select('sum(calon3) as ktpaslon3');
+		return $this->db->get('kesempatan')->row_array();
+	}
+
 	public function total_tps(){
-		$this->db->where('verifikasi',1);
 		return $this->db->get('suara')->num_rows();
+	}
+
+	public function wilayah_kabupaten(){
+		$this->db->group_by('kabupaten');
+		return $this->db->get('tps')->result_array();
+	}
+
+	public function list_suara_idtps($idtps){
+		$this->db->where('idtps', $idtps);
+		return $this->db->get('suara')->result_array();
 	}
 
 }
