@@ -41,12 +41,13 @@
 				<li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="log">Administrator <span class="caret"></span></a>
 			          <ul class="dropdown-menu">
-			            <li><a href="#"><span class="fa fa-edit"> Ganti Password</span></a></li>
+			            <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="fa fa-edit"> Ganti Password</span></a></li>
 			            <li role="separator" class="divider"></li>
 			            <li><a href="<?php echo base_url('welcome/logout'); ?>"><span class="fa fa-sign-out"></span> Logout</a></li>
 			          </ul>
 			        </li>
 			    </ul>
+
 			</div>
 		</nav>
 		<!-- END NAVBAR -->
@@ -66,19 +67,24 @@
 						<li><a href="<?php echo base_url(); ?>suara/view"><i class="fa fa-bar-chart"></i> <span>Suara Masuk</span></a></li>
 						<li><a href="<?php echo base_url(); ?>tps"><i class="fa fa-archive"></i> <span>Data Wilayah</span></a></li>
 						<li><a href="<?php echo base_url(); ?>operator"><i class="fa fa-users"></i> <span>Data Pengguna</span></a></li>
-						<li><a href="<?php echo base_url(); ?>setting"><i class="fa fa-gear"></i> <span>Pengaturan</span></a></li>
+						<li><a href="#" data-toggle="modal" data-target="#setting"><i class="fa fa-gears"></i> <span>Pengaturan</span></a></li>
+						<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i> <span>Ganti Password</span></a></li>
+						<li><a href="<?php echo base_url('welcome/logout'); ?>"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
 						<?php } ?>
 						<!-- End Login Super -->
 						
 						<!-- Level Login Admin/ Operator -->
 						<?php if($level == "admin"){ ?>
-						<li><a href="<?php echo base_url(); ?>dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 						<li><a href="<?php echo base_url(); ?>suara/view"><i class="fa fa-bar-chart"></i> <span>Suara Masuk</span></a></li>
+						<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i> <span>Ganti Password</span></a></li>
+						<li><a href="<?php echo base_url('welcome/logout'); ?>"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
 						<?php } ?>
 						<!-- end Login ADmin -->
 						<!-- Level Login Relawan -->
 						<?php if($level == "relawan"){ ?>
 						<li><a href="<?php echo base_url(); ?>suara"><i class="fa fa-archive"></i> <span>Data Suara</span></a></li>
+						<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i> <span>Ganti Password</span></a></li>
+						<li><a href="<?php echo base_url('welcome/logout'); ?>"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
 						<?php } ?>
 						<!-- End Login Relawan -->
 					</ul>
@@ -100,8 +106,78 @@
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
-	
-		
+
+	<!-- MODAL SETTING -->
+	<div class="modal fade" id="setting" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><span class="fa fa-gears"></span> Pengaturan</h4>
+        </div>
+        <div class="modal-body">
+        	<form>
+        	<div class="form-group">
+		  		<label>Tanggal Pilkada</label>
+		  		<input type="date" name="" class="form-control">
+		  	</div>
+		  	<div class="form-group">
+		  		<label>Tanggal Hari Kesempatan</label>
+		  		<input type="date" name="" class="form-control">
+		  	</div>
+		  	<div class="form-group">
+		  		<label>Pendaftaran</label>
+		  		<label class="switch">
+				  <input type="checkbox" checked>
+				  <span class="slider round"></span>
+				</label>
+		  	</div>
+		  	<hr>
+		  	<button type="submit" class="btn btn-info"><span class="fa fa-save"> Simpan</span></button>
+	        <button type="reset" class="btn btn-danger"><span class="fa fa-remove"> Batal</span></button>
+	        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END MODAL -->
+
+	<!-- MODAL FORGOT PASSWORD -->
+	<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><span class="fa fa-edit"></span> Ganti Password</h4>
+        </div>
+        <div class="modal-body">
+        	<form>
+	          <div class="form-group">
+	          	<label>Password Lama</label>
+	          	<input type="Password" name="#" class="form-control">
+	          </div>
+	          <div class="form-group">
+	          	<label>Password Baru</label>
+	          	<input type="Password" name="#" class="form-control">
+	          </div>
+	          <div class="form-group">
+	          	<label>Konfirmasi Password Baru</label>
+	          	<input type="Password" name="#" class="form-control">
+	          </div>
+	          <button type="submit" class="btn btn-info"><span class="fa fa-save"> Simpan</span></button>
+	          <button type="reset" class="btn btn-danger"><span class="fa fa-remove"> Batal</span></button>
+          	</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END MODAL  -->
         
 	<!-- Javascript -->
 	<script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>

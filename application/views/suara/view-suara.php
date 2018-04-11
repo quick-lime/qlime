@@ -6,10 +6,14 @@
 				<h3 class="panel-title"><?php echo $title; ?></h3>
 			</div>
 			 <div class="panel-body">
-			 	<div class="col-md-12" style="margin-bottom:  10px;"">
-
-			 		<span id="notps"><?php echo $wilayah['kabupaten'] ?> > <?php echo $wilayah['kecamatan'] ?> > <?php echo $wilayah['kelurahan'] ?></span><br/>
-			 		<span id="notps">NO TPS : <?php echo "".$view['notps'].""; ?></span>
+			 	<div class="col-md-12" style="margin-bottom:  10px; margin-top: -15px;"">
+			 		<ol class="breadcrumb">
+						<li><a href="#"><?php echo $wilayah['kabupaten'] ?></a></li>
+						<li><a href="#"><?php echo $wilayah['kecamatan'] ?></a></li>
+						<li><a href="#"><?php echo $wilayah['kelurahan'] ?></a></li>
+						<li class="active">NO TPS : <?php echo "".$view['notps'].""; ?></li>
+					</ol>
+			 		<span id="notps"></span>
 			 	</div>
 			 	<div class="col-md-4">
 			 		<div class="paslon" style="background: #F4D03F;">
@@ -48,14 +52,14 @@
 			 		</div>
 				</div>
 				<div class="col-md-12">
-					<a href="<?php echo base_url(); ?>suara/ralat_suara?id=<?php echo $view['id'] ?>" class="btn btn-info"><span class="fa fa-undo"> Ralat Data Suara</span></a>
+					<a href="<?php echo base_url(); ?>suara/ralat_suara?id=<?php echo $view['id'] ?>" class="btn btn-warning" style="margin-bottom: 10px;"><span class="fa fa-edit"> Ralat Data Suara</span></a>
 				<?php
 					if($view['kesempatan'] >= 1){
 						$kesempatan = $this->suara_model->cek_isi_kesempatan($view['id']);
 						if($kesempatan >= 1){
-							echo"<a href='".base_url()."suara/ralat_kesempatan?idsuara=".$view['id']."' class='btn btn-info'><span class='fa fa-undo'> Ralat Suara Kesempatan</span></a>";
+							echo"<a href='".base_url()."suara/ralat_kesempatan?idsuara=".$view['id']."' class='btn btn-success' style='margin-bottom: 10px;''><span class='fa fa-edit'> Ralat Suara Kesempatan</span></a>";
 						}else{
-							echo"<a href='".base_url()."suara/input_kesempatan?id=".$view['id']."' class='btn btn-info'><span class='fa fa-undo'> Input Suara Kesempatan</span></a>";
+							echo"<a href='".base_url()."suara/input_kesempatan?id=".$view['id']."' class='btn btn-success' style='margin-bottom: 10px;'><span class='fa fa-edit'> Input Suara Kesempatan</span></a>";
 						}
 					}
 				?>

@@ -7,7 +7,6 @@
 				</div>
 				  <div class="panel-body">
 				  	<a href="<?php echo base_url(); ?>operator/add"><button class="btn btn-info btn-action"><span class="fa fa-plus"> Tambah</span></button></a>
-					<a href="#"><button class="btn btn-danger btn-action"><span class="fa fa-refresh"> Refresh</span></button></a>
 					<div class="table-responsive">
 							<table id="data" class="table table-striped table-hover">
 								<thead>

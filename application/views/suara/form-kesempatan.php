@@ -51,8 +51,9 @@
 			      		<input required="true" class="form-control" disabled value="<?php echo $detail['notps'] ?>">
 			      	</div>
 			      	<div class="col-md-12">
-			      		<button type="submit" class="btn btn-info"><span class="fa fa-save"></span> Simpan</button>
-						<button type="reset" class="btn btn-danger"><span class="fa fa-remove"></span> Batal</button>
+			      		<button type="submit" class="btn btn-info" style='margin-bottom: 10px;'><span class="fa fa-save"></span> Simpan</button>
+						<button type="reset" class="btn btn-danger" style='margin-bottom: 10px;'><span class="fa fa-remove"></span> Batal</button>
+						<a href="<?php echo base_url(); ?>suara" class="btn btn-warning" style='margin-bottom: 10px;'><span class="fa fa-arrow-left"></span> Kembali</a>
 			      	</div>
 				</div>
 			</div>

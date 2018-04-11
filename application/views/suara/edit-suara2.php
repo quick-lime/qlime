@@ -35,8 +35,9 @@
 					  		<input type="number" class="form-control" value="<?php echo $detail['notps'] ?>"  placeholder="Kesempatan Memilih" required="" name="notps">
 					  	</div>
 					    <div  class="form-group col-md-12">
-					    	<button type="submit" value="update" name='update' class="btn btn-success" style="margin-bottom: 10px;"><span class="fa fa-send" ></span> Perbarui Data suara</button>
+					    	<button type="submit" value="update" name='update' class="btn btn-info" style="margin-bottom: 10px;"><span class="fa fa-save" ></span> Perbarui Data suara</button>
 					    	<button type="reset" class="btn btn-danger" style="margin-bottom: 10px;"><span class="fa fa-remove"></span> Batal</button>
+					    	<a href="<?php echo base_url(); ?>suara" class="btn btn-warning" style="margin-bottom: 10px;"><span class="fa fa-arrow-left"></span> Kembali</a>
 						</div>
 					  	</div>
 						<?php echo form_close(); ?>

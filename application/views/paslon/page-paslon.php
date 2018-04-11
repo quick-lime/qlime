@@ -8,7 +8,7 @@
 
 			                </div>
 			                <div class="avatar">
-			                    <img alt="" src="<?php echo base_url(); ?>assets/img/1.png">
+			                    <img alt="" src="assets/img/1.png">
 			                </div>
 			                <div class="info">
 			                    <div class="title">
